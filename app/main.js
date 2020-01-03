@@ -5,7 +5,7 @@ const path = require('path');
 const {app, BrowserWindow, Menu} = electron;
 
 // Setting the environment
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'producton';
 
 let mainWindow;
 let readingWindow;
@@ -18,6 +18,8 @@ app.on('ready', function(){
     // New window
     mainWindow = new BrowserWindow({
         title: 'Tatokuro - Manga Reader',
+        icon: __dirname + '/assets/icons/icon.png',
+        show: false,
         // The size of the window will be dependant on the size of the primary display
         width: screenSize.width/100*80,
         height: screenSize.height/100*80
@@ -25,7 +27,7 @@ app.on('ready', function(){
 
     // Load HTML into window
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'windows/mainWindow.html'),
+        pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true
     }));
@@ -34,6 +36,12 @@ app.on('ready', function(){
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     // Insert menu
     Menu.setApplicationMenu(mainMenu);
+
+    // Show the application once it has loaded
+    mainWindow.on('ready-to-show', function() { 
+        mainWindow.show(); 
+        mainWindow.focus(); 
+    });
 
     // Quit app when close button is clicked
     mainWindow.on('closed', function(){
@@ -88,12 +96,13 @@ function createReadingWindow(){
     // New window
     readingWindow = new BrowserWindow({
         title: 'Tatokuro - Reading Window',
+        icon: __dirname + '/assets/icons/icon.png',
         fullscreen: true
     });
 
     // Load HTML into window
     readingWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'windows/readingWindow.html'),
+        pathname: path.join(__dirname, 'reading.html'),
         protocol: 'file:',
         slashes: true
     }));
@@ -117,6 +126,8 @@ function createAboutWindow(){
     // New window
     aboutWindow = new BrowserWindow({
         title: 'Tatokuro - About',
+        icon: __dirname + '/assets/icons/icon.png',
+        show: false,
         width: screenSize.height/100*50,
         height: screenSize.height/100*50
     });
@@ -130,7 +141,7 @@ function createAboutWindow(){
 
     // Load HTML into window
     aboutWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'windows/aboutWindow.html'),
+        pathname: path.join(__dirname, 'about.html'),
         protocol: 'file:',
         slashes: true
     }));
@@ -139,6 +150,12 @@ function createAboutWindow(){
     aboutWindow.webContents.on('new-window', function(e, url) {
         e.preventDefault();
         require('electron').shell.openExternal(url);
+    });
+
+    // Show the application once it has loaded
+    aboutWindow.on('ready-to-show', function() { 
+        aboutWindow.show(); 
+        aboutWindow.focus(); 
     });
 
     // Garbage collection
@@ -154,7 +171,7 @@ if (process.env.NODE_ENV !== 'production'){
         submenu: [
             {
                 label: 'Toggle DevTools',
-                acceletator: 'CmdOrCtrl+I',
+                accelerator: 'CmdOrCtrl+Shift+I',
                 click(item, focusedWindow){
                     focusedWindow.toggleDevTools();
                 }
