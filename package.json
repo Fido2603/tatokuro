@@ -29,5 +29,7 @@
     "electron": "^7.1.7",
     "electron-packager": "^14.1.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-json-storage": "^4.1.8"
+  }
 }

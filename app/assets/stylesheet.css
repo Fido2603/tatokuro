@@ -1,11 +1,14 @@
 /* Global */
 :root {
     --background: #23272A;
+    --background-standout: rgb(23, 25, 27);
     --menu: #111;
     --menu-text: #818181;
     --text: #DCDDDE;
     --link: #00B0F4;
 }
+
+@import url('./fonts.css');
 
 cssbody {
     font: caption;
@@ -19,6 +22,11 @@ body {
     background-color: var(--background);
     color: var(--text);
     margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
 }
 
 a:link, a:visited {
@@ -37,7 +45,7 @@ a:hover, a:active {
     float: left;
     cursor: pointer;
     width: 35px;
-    padding: 0px 15px 0px 0px;
+    padding: 0px 15px 0px 15px;
 }
 
 .menu-btn div {
@@ -48,7 +56,6 @@ a:hover, a:active {
     transition: 0.4s;
 }
 
-/* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -62,7 +69,6 @@ a:hover, a:active {
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-/* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -72,12 +78,10 @@ a:hover, a:active {
     transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: var(--text);
 }
 
-/* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -86,30 +90,33 @@ a:hover, a:active {
     margin-left: 50px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
 
-.library {
-    user-select: none;
+.titlebar {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-standout);
 }
 
-.library h1 {
-    margin: 0.67em 15px;
+#library, #catalogue {
+    user-select: none;
 }
 
 ul#manga {
     list-style-type: none;
     text-align: center;
+    padding-inline-start: 0;
 }
 
 ul#manga li {
     cursor: pointer;
     border-radius: 5px;
     min-width: 100px;
-    max-width: 15%;
+    width: 15%;
+    max-width: 240px;
     display: inline-block;
     margin: 0px 10px 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
