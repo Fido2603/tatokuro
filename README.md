@@ -1,4 +1,4 @@
-# ![Tatokuro Icon](./assets/icons/icon@32x32.png) Tatokuro
+# ![Tatokuro Icon](./app/assets/icons/icon@32x32.png) Tatokuro
 Tatokuro is a free and open-source manga reading application for Desktop, heavily inspired by the manga reader for Android, [Tachiyomi](https://github.com/inorichi/tachiyomi).
 
 ## Features
